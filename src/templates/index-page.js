@@ -106,8 +106,6 @@ export const IndexPageTemplate = ({
         </div>
       </div>
     </section>
-    <script src="../ab-testing-client.js"></script>
-    <script>const client = new AbTestingClient("5d6c1c8e1b57d1001ebb74b6"); client.init();</script>
   </div>
 );
 
@@ -137,6 +135,10 @@ const IndexPage = ({ data }) => {
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
+      <script src="../ab-testing-client.js"></script>
+      <script>
+        const client = new AbTestingClient("5d6c1c8e1b57d1001ebb74b6"); client.init();
+      </script>
     </Layout>
   );
 };
