@@ -137,10 +137,12 @@ const IndexPage = ({ data }) => {
         intro={frontmatter.intro}
       />
       <Helmet>
-        <script src="../static/ab-testing-client.js"></script>
-        <script>
-          const client = new AbTestingClient("5d6c1c8e1b57d1001ebb74b6"); client.init();
-        </script>
+        <script type="text/javascript" src="../static/ab-testing-client.js"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            _html: ` const client = new AbTestingClient("5d6c1c8e1b57d1001ebb74b6"); client.init();`
+          }}
+        />
       </Helmet>
     </Layout>
   );
