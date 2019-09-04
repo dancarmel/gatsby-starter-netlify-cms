@@ -1,26 +1,23 @@
-import React from 'react'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import React from "react";
+import { kebabCase } from "lodash";
+import Helmet from "react-helmet";
+import { Link, graphql } from "gatsby";
+import Layout from "../../components/Layout";
 
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
     site: {
-      siteMetadata: { title },
-    },
-  },
+      siteMetadata: { title }
+    }
+  }
 }) => (
   <Layout>
     <section className="section">
       <Helmet title={`Tags | ${title}`} />
       <div className="container content">
         <div className="columns">
-          <div
-            className="column is-10 is-offset-1"
-            style={{ marginBottom: '6rem' }}
-          >
+          <div className="column is-10 is-offset-1" style={{ marginBottom: "6rem" }}>
             <h1 className="title is-size-2 is-bold-light">Tags</h1>
             <ul className="taglist">
               {group.map(tag => (
@@ -34,11 +31,19 @@ const TagsPage = ({
           </div>
         </div>
       </div>
+      <Helmet>
+        <script type="text/javascript" src="../static/ab-testing-client.js"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            _html: ` const client = new AbTestingClient("5d6c1c8e1b57d1001ebb74b6"); client.init();`
+          }}
+        />
+      </Helmet>
     </section>
   </Layout>
-)
+);
 
-export default TagsPage
+export default TagsPage;
 
 export const tagPageQuery = graphql`
   query TagsQuery {
@@ -54,4 +59,4 @@ export const tagPageQuery = graphql`
       }
     }
   }
-`
+`;
